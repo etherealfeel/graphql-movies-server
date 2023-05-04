@@ -1,23 +1,32 @@
 type Query {
-    movies: Movies
+  movies(page: Int): Movies
+  moviesByIds(ids: [Int]): [Movie]
 }
 
 type Movies {
-    page: Int!
-    totalPages: Int!
-    totalResults: Int!
-    results: [Movie!]
+  page: Int!
+  totalPages: Int!
+  totalResults: Int!
+  results: [Movie!]
 }
 
 type Movie {
-    id: ID!
-    title: String!
-    releaseDate: String!
-    posterPath: String
-    genres: [Genre!]
+  id: ID!
+  title: String!
+  releaseDate(format: String): String!
+  posterPath: String
+  genres: [Genre!]
+  adult: Boolean
+  overview: String
+  originalLanguage: String
+  backdropPath: String
+  popularity: Float
+  voteCount: Int
+  voteAverage: Float
+  video: Boolean
 }
 
 type Genre {
-    id: ID
-    name: String
+  id: ID
+  name: String
 }
